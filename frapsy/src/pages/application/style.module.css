@@ -1,0 +1,41 @@
+.mainWrapper {
+  display: flex;
+  grid-gap: 4rem;
+  grid-template-columns: 400px 1fr;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainWrapper>div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.mainWrapper>div:last-child>div+div {
+  margin-top: 3rem;
+}
+
+.statisticsWrapper {
+  display: flex;
+  align-items: flex-end;
+  width: 450px;
+  margin-top: 4rem;
+}
+
+.statisticsWrapper>div:first-child {
+  flex-grow: 1;
+}
+
+.statisticsWrapper>div:not(:first-child) {
+  margin-right: 1rem;
+}
+
+.statisticsWrapper>div:last-child {
+  margin-right: 0;
+}
