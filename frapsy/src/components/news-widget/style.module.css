@@ -5,7 +5,7 @@
 
 .mainWrapper>div:first-child {
   position: absolute;
-  width: 450px;
+  width: 480px;
   height: 200px;
   background: linear-gradient(180deg, #643277 0%, #371D41 100%);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
@@ -17,7 +17,7 @@
 
 .mainWrapper>div:last-child {
   position: absolute;
-  width: 430px;
+  width: 450px;
   height: 200px;
   background: linear-gradient(180deg, #613671 0%, #26172c 100%);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);

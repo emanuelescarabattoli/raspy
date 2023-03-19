@@ -5,6 +5,7 @@ import CloseButton from "../../components/close-button"
 import WeatherWidget from "../../components/weather-widget"
 import ClockWidget from "../../components/clock-widget"
 import NewsWidget from "../../components/news-widget"
+import SoundButton from "../../components/sound-button"
 
 const fetchNews = async () => {
   const result = [];
@@ -80,6 +81,7 @@ const Application = () => {
         <NewsWidget newsItem={currentNewsIndex ? news[currentNewsIndex] : {}} />
         <div className={style.statisticsWrapper}>
           <div>
+            <SoundButton />
             <CloseButton />
           </div>
           <div>

@@ -1,6 +1,6 @@
 .mainWrapper {
   display: flex;
-  grid-gap: 4rem;
+  grid-gap: 1.5rem;
   grid-template-columns: 400px 1fr;
   width: 100vw;
   height: 100vh;
@@ -18,22 +18,25 @@
 }
 
 .mainWrapper>div:last-child>div+div {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .statisticsWrapper {
   display: flex;
-  align-items: flex-end;
-  width: 450px;
-  margin-top: 4rem;
+  width: 480px;
+  margin-top: 3rem;
 }
 
 .statisticsWrapper>div:first-child {
   flex-grow: 1;
 }
 
+.statisticsWrapper>div:first-child>*+* {
+  margin-top: 1rem;
+}
+
 .statisticsWrapper>div:not(:first-child) {
-  margin-right: 1rem;
+  margin-right: 2rem;
 }
 
 .statisticsWrapper>div:last-child {

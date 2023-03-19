@@ -1,6 +1,6 @@
 .mainWrapper {
   width: 180px;
-  height: 100px;
+  height: 140px;
   background: linear-gradient(180deg, #212C8E 0%, #0E133C 100%);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
@@ -18,7 +18,7 @@
 }
 
 .mainWrapper>div:first-child>span:first-child {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 .mainWrapper>div:last-child>span:last-child {
