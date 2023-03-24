@@ -17,5 +17,8 @@
     "start-prod": "env=PROD electron ./src/main.js",
     "build": "env=PROD cd ../frapsy && yarn build && cd ../eraspy && cp -r ../frapsy/build ./src/build && electron-builder --linux deb --armv7l",
     "build-dev": "env=PROD cd ../frapsy && yarn build && cd ../eraspy && cp -r ../frapsy/build ./src/build && electron-builder --linux deb"
+  },
+  "dependencies": {
+    "onoff": "^6.0.3"
   }
 }
