@@ -1,20 +1,26 @@
 const { app, BrowserWindow } = require("electron")
 const path = require("path")
-// var Gpio = require("onoff").Gpio;
+// const Gpio = require("onoff").Gpio;
 // const { ipcMain } = require("electron");
 
+// let beeperPin = undefined
+
 // try {
-//   var beeperPin = new Gpio(21, "out");
-//   beeperPin.writeSync(1)
-//   setTimeout(() => {
-//     beeperPin.writeSync(0)
-//   }, 500);
+//   beeperPin = new Gpio(21, "out");
 // } catch (error) {
-//   console.log(error)
+//   console.log(error);
 // }
 
 // const beep = () => {
-//   console.log("")
+//   try {
+//     beeperPin.writeSync(1)
+//     setTimeout(() => {
+//       beeperPin.writeSync(0)
+//     }, 500);
+//     return "done";
+//   } catch (error) {
+//     return error.message;
+//   }
 // }
 
 const devSettings = {
