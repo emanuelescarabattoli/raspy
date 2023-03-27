@@ -1,3 +1,6 @@
-window.addEventListener('DOMContentLoaded', () => {
-  return undefined;
+const { contextBridge, ipcRenderer } = require("electron");
+
+contextBridge.exposeInMainWorld(
+  "electronAPI", {
+  beep: (data) => ipcRenderer.send("beep")
 })

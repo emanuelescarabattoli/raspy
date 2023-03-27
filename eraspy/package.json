@@ -4,21 +4,24 @@
     "name": "example",
     "email": "example@ecample.com"
   },
+  "description": "eraspy",
   "name": "eraspy",
   "version": "1.0.0",
   "main": "./src/main.js",
   "license": "MIT",
-  "devDependencies": {
-    "electron": "^23.1.4",
-    "electron-builder": "^23.6.0"
+  "dependencies": {
+    "onoff": "4.1.4"
   },
   "scripts": {
     "start": "env=DEV electron ./src/main.js",
     "start-prod": "env=PROD electron ./src/main.js",
     "build": "env=PROD cd ../frapsy && yarn build && cd ../eraspy && cp -r ../frapsy/build ./src/build && electron-builder --linux deb --armv7l",
-    "build-dev": "env=PROD cd ../frapsy && yarn build && cd ../eraspy && cp -r ../frapsy/build ./src/build && electron-builder --linux deb"
+    "build-dev": "env=PROD cd ../frapsy && yarn build && cd ../eraspy && cp -r ../frapsy/build ./src/build && electron-builder --linux deb",
+    "rebuild": "electron-rebuild -f -w epoll"
   },
-  "dependencies": {
-    "onoff": "^6.0.3"
+  "devDependencies": {
+    "@electron/rebuild": "^3.2.10",
+    "electron": "^23.1.4",
+    "electron-builder": "^23.6.0"
   }
 }

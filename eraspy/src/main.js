@@ -1,27 +1,28 @@
 const { app, BrowserWindow } = require("electron")
 const path = require("path")
-// const Gpio = require("onoff").Gpio;
-// const { ipcMain } = require("electron");
+const { ipcMain } = require("electron");
+const fs = require("fs");
 
-// let beeperPin = undefined
+let beeperPin = undefined
 
-// try {
-//   beeperPin = new Gpio(21, "out");
-// } catch (error) {
-//   console.log(error);
-// }
+try {
+  const Gpio = require("onoff").Gpio;
+  beeperPin = new Gpio(new Buffer("21"), "out");
+} catch (error) {
+  fs.writeFileSync("/home/emanuele/Downloads/raspy/error.txt", error.message);
+}
 
-// const beep = () => {
-//   try {
-//     beeperPin.writeSync(1)
-//     setTimeout(() => {
-//       beeperPin.writeSync(0)
-//     }, 500);
-//     return "done";
-//   } catch (error) {
-//     return error.message;
-//   }
-// }
+const beep = () => {
+  try {
+    beeperPin.writeSync(1);
+    setTimeout(() => {
+      beeperPin.writeSync(0);
+    }, 500);
+    return "done";
+  } catch (error) {
+    fs.writeFileSync("~/Downloads/raspy/error.txt", error.message);
+  }
+}
 
 const devSettings = {
   width: 800,
@@ -59,7 +60,7 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-  // ipcMain.on("beep", beep)
+  ipcMain.on("beep", beep);
   createWindow()
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
