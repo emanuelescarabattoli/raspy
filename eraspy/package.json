@@ -4,7 +4,6 @@
     "name": "example",
     "email": "example@ecample.com"
   },
-  "description": "eraspy",
   "name": "eraspy",
   "version": "1.0.0",
   "main": "./src/main.js",
