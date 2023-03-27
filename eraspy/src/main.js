@@ -8,7 +8,7 @@ const beep = () => {
   try {
     spawn('yarn', ["--cwd", "/home/emanuele/Downloads/raspy/raspy/beep", "beep"]);
   } catch (error) {
-    fs.writeFileSync("/home/emanuele/Downloads/raspy/error.txt", error.message);
+    fs.writeFileSync("/home/emanuele/Downloads/raspy/error-eraspy.txt", error.message);
   }
 }
 

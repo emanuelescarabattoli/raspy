@@ -1,11 +1,7 @@
-const beeperPin = undefined
+const fs = require("fs");
+const Gpio = require("onoff").Gpio;
 
-try {
-  const Gpio = require("onoff").Gpio;
-  beeperPin = new Gpio(21, "out");
-} catch (error) {
-  console.log(error.message);
-}
+const beeperPin = new Gpio(21, "out");
 
 const beep = () => {
   try {
@@ -15,7 +11,7 @@ const beep = () => {
     }, 500);
     return "done";
   } catch (error) {
-    console.log(error.message);
+    fs.writeFileSync("/home/emanuele/Downloads/raspy/error-beep.txt", error.message);
   }
 }
 
