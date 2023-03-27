@@ -12,7 +12,7 @@
     "onoff": "4.1.4"
   },
   "scripts": {
-    "beep": "node ."
+    "beep": "node ~/Downloads/raspy/raspy/beep/"
   },
   "devDependencies": {}
 }
