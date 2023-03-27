@@ -20,3 +20,5 @@ const beep = () => {
     fs.writeFileSync("~/Downloads/raspy/error.txt", error.message);
   }
 }
+
+beep();

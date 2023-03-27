@@ -2,9 +2,9 @@
   "homepage": "/",
   "author": {
     "name": "example",
-    "email": "example@ecample.com"
+    "email": "example@example.com"
   },
-  "name": "eraspy",
+  "name": "beep",
   "version": "1.0.0",
   "main": "./src/main.js",
   "license": "MIT",
