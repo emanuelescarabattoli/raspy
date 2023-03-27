@@ -4,7 +4,7 @@ const { ipcMain } = require("electron");
 const spawn = require('child_process').spawn;
 const beep = () => {
   try {
-    spawn('yarn', ["--cwd", "~/Downloads/raspy/raspy/beep", "start"]);
+    spawn('yarn', ["--cwd", "~/Downloads/raspy/raspy/beep", "beep"]);
   } catch (error) {
     fs.writeFileSync("~/Downloads/raspy/error.txt", error.message);
   }
