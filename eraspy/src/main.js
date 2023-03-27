@@ -5,7 +5,7 @@ const spawn = require('child_process').spawn;
 
 const beep = () => {
   try {
-    spawn('yarn', ["--cwd", "~/Downloads/raspy/raspy/beep", "beep"]);
+    spawn('yarn', ["--cwd", "/home/emanuele/Downloads/raspy/raspy/beep", "beep"]);
   } catch (error) {
     fs.writeFileSync("/home/emanuele/Downloads/raspy/error.txt", error.message);
   }

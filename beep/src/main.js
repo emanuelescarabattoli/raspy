@@ -17,7 +17,7 @@ const beep = () => {
     }, 500);
     return "done";
   } catch (error) {
-    fs.writeFileSync("~/Downloads/raspy/error.txt", error.message);
+    fs.writeFileSync("/home/emanuele/Downloads/raspy/error.txt", error.message);
   }
 }
 
