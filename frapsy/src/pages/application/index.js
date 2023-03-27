@@ -18,9 +18,24 @@ const fetchNews = async () => {
     const description = rssItem.querySelector("description")?.innerHTML;
     const image = rssItem.querySelector("content")?.getAttribute("url");
     const pubDate = new Date(rssItem.querySelector("pubDate")?.innerHTML);
-    if(title) result.push({ image, title, pubDate, description });
+    if (title) result.push({ image, title, pubDate, description });
   }
   return result;
+}
+
+const fetchTemperature = async () => {
+  const result = await fetch("https://api.open-meteo.com/v1/forecast?latitude=43.11&longitude=12.38&hourly=temperature_2m,relativehumidity_2m");
+  const jsonData = await result.json();
+  return {
+    temperature: jsonData.hourly.temperature_2m[jsonData.hourly.temperature_2m.length - 1],
+    humidity: jsonData.hourly.relativehumidity_2m[jsonData.hourly.relativehumidity_2m.length - 1]
+  }
+}
+
+const fetchCrypto = async () => {
+  const result = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=cardano%2Cethereum&vs_currencies=usd&include_24hr_change=true");
+  const jsonData = await result.json();
+  return { ...jsonData }
 }
 
 const Application = () => {
@@ -35,22 +50,26 @@ const Application = () => {
   const [currentNewsIndex, setCurrentNewsIndex] = useState(-1);
 
   useEffect(() => {
-    const updateNews = async () => {
-      const updatedNews = await fetchNews()
-      setNews(updatedNews)
-      setCurrentNewsIndex(0)
+    const fetchData = async () => {
+      const updatedNews = await fetchNews();
+      const updatedTemperature = await fetchTemperature();
+      const updatedCrypto = await fetchCrypto();
+      console.log(updatedNews)
+      setNews(updatedNews);
+      setCurrentNewsIndex(0);
+      setTemperature(updatedTemperature.temperature);
+      setHumidity(updatedTemperature.humidity);
+      setDateTime(new Date());
+      setCrypto(updatedCrypto);
     }
-    if(currentNewsIndex !== 0 && (currentNewsIndex === -1 || (news.length && currentNewsIndex === news.length - 1))) {
-      updateNews();
-    }
-  }, [currentNewsIndex])
+    fetchData();
+  }, [])
 
   useEffect(() => {
     const idWeather = setInterval(async () => {
-      const result = await fetch("https://api.open-meteo.com/v1/forecast?latitude=43.11&longitude=12.38&hourly=temperature_2m,relativehumidity_2m");
-      const jsonData = await result.json();
-      setTemperature(jsonData.hourly.temperature_2m[jsonData.hourly.temperature_2m.length - 1]);
-      setHumidity(jsonData.hourly.relativehumidity_2m[jsonData.hourly.relativehumidity_2m.length - 1]);
+      const updatedTemperature = await fetchTemperature();
+      setTemperature(updatedTemperature.temperature);
+      setHumidity(updatedTemperature.humidity);
       setDateTime(new Date());
     }, 45000)
 
@@ -59,9 +78,8 @@ const Application = () => {
     }, 15000)
 
     const idCrypto = setInterval(async () => {
-      const result = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana%2Cethereum&vs_currencies=usd&include_24hr_change=true");
-      const jsonData = await result.json();
-      setCrypto(jsonData)
+      const updatedCrypto = await fetchCrypto()
+      setCrypto(updatedCrypto);
     }, 60000)
 
     weatherInterval.current = idWeather;
@@ -75,17 +93,19 @@ const Application = () => {
     };
   }, [])
 
+  console.log(currentNewsIndex)
+
   return (
     <div className={style.mainWrapper} style={{ cursor: process.env.NODE_ENV === "development" ? undefined : "none" }}>
       <div>
-        <NewsWidget newsItem={currentNewsIndex ? news[currentNewsIndex] : {}} />
+        <NewsWidget newsItem={(currentNewsIndex ?? undefined) !== undefined ? news[currentNewsIndex] : {}} />
         <div className={style.statisticsWrapper}>
           <div>
             <SoundButton />
             <CloseButton />
           </div>
           <div>
-            <StatisticsWidget title="SOL" crypto={crypto?.solana} />
+            <StatisticsWidget title="ADA" crypto={crypto?.cardano} />
           </div>
           <div>
             <StatisticsWidget title="ETH" crypto={crypto?.ethereum} />

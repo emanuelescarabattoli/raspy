@@ -5,9 +5,9 @@ const CloseButton = () => {
     window.close()
   }
   return (
-    <div className={style.mainWrapper} onClick={onClick}>
+    <button className={style.mainWrapper} onClick={onClick}>
       <i className="fa-solid fa-power-off"></i>
-    </div>
+    </button>
   )
 }
 

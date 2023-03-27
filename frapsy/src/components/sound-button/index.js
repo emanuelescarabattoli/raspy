@@ -5,9 +5,9 @@ const SoundButton = () => {
     window.electronAPI.beep();
   }
   return (
-    <div className={style.mainWrapper} onClick={onClick}>
+    <button className={style.mainWrapper} onClick={onClick}>
       <i className="fa-solid fa-play"></i>
-    </div>
+    </button>
   )
 }
 
