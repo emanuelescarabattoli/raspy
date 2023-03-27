@@ -1,0 +1,18 @@
+{
+  "homepage": "/",
+  "author": {
+    "name": "example",
+    "email": "example@ecample.com"
+  },
+  "name": "eraspy",
+  "version": "1.0.0",
+  "main": "./src/main.js",
+  "license": "MIT",
+  "dependencies": {
+    "onoff": "4.1.4"
+  },
+  "scripts": {
+    "beep": "node ."
+  },
+  "devDependencies": {}
+}
