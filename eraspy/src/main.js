@@ -6,7 +6,7 @@ const fs = require("fs");
 
 const beep = () => {
   try {
-    spawn('yarn', ["--cwd", "/home/emanuele/Downloads/raspy/raspy/beep", "beep"]);
+    spawn('python', ["/home/emanuele/Downloads/raspy/raspy/beep/beep.py"]);
   } catch (error) {
     fs.writeFileSync("/home/emanuele/Downloads/raspy/error-eraspy.txt", error.message);
   }
