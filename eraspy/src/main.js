@@ -1,24 +1,10 @@
 const { app, BrowserWindow } = require("electron")
 const path = require("path")
 const { ipcMain } = require("electron");
-const fs = require("fs");
-
-let beeperPin = undefined
-
-try {
-  const Gpio = require("onoff").Gpio;
-  beeperPin = new Gpio(new Buffer("21"), "out");
-} catch (error) {
-  fs.writeFileSync("/home/emanuele/Downloads/raspy/error.txt", error.message);
-}
-
+const spawn = require('child_process').spawn;
 const beep = () => {
   try {
-    beeperPin.writeSync(1);
-    setTimeout(() => {
-      beeperPin.writeSync(0);
-    }, 500);
-    return "done";
+    spawn('node', ["~/Downloads/raspy/raspy/beep/main.js"]);
   } catch (error) {
     fs.writeFileSync("~/Downloads/raspy/error.txt", error.message);
   }

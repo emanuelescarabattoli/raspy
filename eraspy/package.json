@@ -8,9 +8,7 @@
   "version": "1.0.0",
   "main": "./src/main.js",
   "license": "MIT",
-  "dependencies": {
-    "onoff": "4.1.4"
-  },
+  "dependencies": {},
   "scripts": {
     "start": "env=DEV electron ./src/main.js",
     "start-prod": "env=PROD electron ./src/main.js",
