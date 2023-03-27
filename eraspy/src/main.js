@@ -2,6 +2,7 @@ const { app, BrowserWindow } = require("electron")
 const path = require("path")
 const { ipcMain } = require("electron");
 const spawn = require('child_process').spawn;
+const fs = require("fs");
 
 const beep = () => {
   try {
