@@ -1,12 +1,10 @@
-const fs = require("fs");
-
-let beeperPin = undefined
+const beeperPin = undefined
 
 try {
   const Gpio = require("onoff").Gpio;
   beeperPin = new Gpio(21, "out");
 } catch (error) {
-  fs.writeFileSync("/home/emanuele/Downloads/raspy/error.txt", error.message);
+  console.log(error.message);
 }
 
 const beep = () => {
@@ -17,7 +15,7 @@ const beep = () => {
     }, 500);
     return "done";
   } catch (error) {
-    fs.writeFileSync("/home/emanuele/Downloads/raspy/error.txt", error.message);
+    console.log(error.message);
   }
 }
 
