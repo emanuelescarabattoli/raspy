@@ -51,16 +51,30 @@ const Application = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const updatedNews = await fetchNews();
-      const updatedTemperature = await fetchTemperature();
-      const updatedCrypto = await fetchCrypto();
-      console.log(updatedNews)
-      setNews(updatedNews);
-      setCurrentNewsIndex(0);
-      setTemperature(updatedTemperature.temperature);
-      setHumidity(updatedTemperature.humidity);
-      setDateTime(new Date());
-      setCrypto(updatedCrypto);
+      try {
+        const updatedTemperature = await fetchTemperature();
+        setCurrentNewsIndex(0);
+        setTemperature(updatedTemperature.temperature);
+        setHumidity(updatedTemperature.humidity);
+        setDateTime(new Date());
+      } catch (error) {
+        console.error(error.message)
+      }
+      try {
+        const updatedNews = await fetchNews();
+        setNews(updatedNews);
+        setCurrentNewsIndex(0);
+
+      } catch (error) {
+        console.error(error.message)
+      }
+      try {
+        const updatedCrypto = await fetchCrypto();
+        setCrypto(updatedCrypto);
+
+      } catch (error) {
+        console.error(error.message)
+      }
     }
     fetchData();
   }, [])
@@ -92,8 +106,6 @@ const Application = () => {
       clearInterval(cryptoInterval.current)
     };
   }, [])
-
-  console.log(currentNewsIndex)
 
   return (
     <div className={style.mainWrapper} style={{ cursor: process.env.NODE_ENV === "development" ? undefined : "none" }}>
